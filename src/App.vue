@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <HelloWorld title="Hello" message="※これは、Vue.jsのサンプルプロジェクトです。"/>
+    <HelloWorld v-bind:title="message" />
+    <hr>
+    <button v-on:click="doAction()">change title</button>
   </div>
 </template>
 
@@ -11,6 +13,17 @@ export default {
   name: 'app',
   components: {
     HelloWorld
+  },
+  data: function() {
+    return {
+      message: 'Hello',
+    };
+  },
+  methods: {
+    doAction: function () {
+      const input = prompt("new title");
+      this.message = input;
+    }
   }
 }
 </script>
